@@ -56,6 +56,18 @@ public class PercolationStats
         return StdStats.stddev(thrs);
     }
 
+    // returns lower bound of the 95% confidence interval
+    public double confidenceLo()
+    {
+        return mean() - 1.96 * stddev() / Math.pow(thrs.length, 0.5);
+    }
+
+    // returns upper bound of the 95% confidence interval
+    public double confidenceHi()
+    {
+        return mean() + 1.96 * stddev() / Math.pow(thrs.length, 0.5);
+    }
+
     // test client
     public static void main(String [ ] args)
     {
